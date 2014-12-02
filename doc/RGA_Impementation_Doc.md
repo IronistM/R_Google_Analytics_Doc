@@ -89,7 +89,7 @@ require("dataframes2xls")
 # We will need the following helper function
 # to parse the websiteUrl in order to use it in our file naming
 # It is adapted from this stackoverflow Q&A : http://stackoverflow.com/a/17286485
-domain.name <- function(urls) {
+domain_name <- function(urls) {
   require(httr)
   require(plyr)
   paths <- laply(urls, function(u) with(parse_url(u),
@@ -110,7 +110,7 @@ for (i in 1:length(accounts))
   #   write.csv(tmp_profiles, file = paste0("ga_profiles_",i,".csv"))
   #   write.csv(tmp_webproperties, file = paste0("ga_webproperties_",i,".csv"))
   # Attempt 2 : xls files
-    write.xls(c(tmp_webproperties,tmp_profiles,tmp_goals), file=paste0("ga_doc_",domain.name(websiteUrl[i]),".xls"))
+    write.xls(c(tmp_webproperties,tmp_profiles,tmp_goals), file=paste0("ga_doc_",domain_name(websiteUrl[i]),".xls"))
 }
 
 ```
