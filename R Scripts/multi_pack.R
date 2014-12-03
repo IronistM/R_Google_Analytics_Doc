@@ -8,3 +8,9 @@ multi_pack <- function(pkg){
     install.packages(new.pkg, dependencies = TRUE)
   sapply(pkg, require, character.only = TRUE)
 }
+
+# Example run
+# > ipak(packages)
+# Loading required package: dataframes2xls
+# dataframes2xls       devtools 
+# TRUE           TRUE 
