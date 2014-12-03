@@ -85,19 +85,14 @@ We will create an excel file for each account we have. We could also modify this
 
 ```r
 # Start getting the information! ------------------------------------------
-require("dataframes2xls")
+require(dataframes2xls)
+require(devtools)
 # We will need the following helper function
 # to parse the websiteUrl in order to use it in our file naming
 # It is adapted from this stackoverflow Q&A : http://stackoverflow.com/a/17286485
-domain_name <- function(urls) {
-  require(httr)
-  require(plyr)
-  paths <- laply(urls, function(u) with(parse_url(u),
-                                        paste0(hostname, "/", path)))
-  gsub("^/?(?:www\\.)?([^/]+).*$", "\\1", paths)
-}
+source_url("https://github.com/IronistM/R_Google_Analytics_Doc/raw/master/R%20Scripts/domain_name_function.R")
 ```
-I include another export to a .csv version in the loop in case you prefer it.
+
 ```r
 for (i in 1:length(accounts))
 { 
@@ -105,10 +100,6 @@ for (i in 1:length(accounts))
   tmp_profiles <- get_profiles(account.id = accounts[i])
   tmp_webproperties <- get_webproperties(account.id = accounts[i])
   # Let's write the results to files
-  # Attempt 1 : csv
-  #   write.csv(tmp_goals, file = paste0("ga_goals_",i,".csv"))
-  #   write.csv(tmp_profiles, file = paste0("ga_profiles_",i,".csv"))
-  #   write.csv(tmp_webproperties, file = paste0("ga_webproperties_",i,".csv"))
   # Attempt 2 : xls files
     write.xls(c(tmp_webproperties,tmp_profiles,tmp_goals), file=paste0("ga_doc_",domain_name(websiteUrl[i]),".xls"))
 }
