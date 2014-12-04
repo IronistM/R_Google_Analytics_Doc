@@ -1,5 +1,7 @@
-# Initiate RGA ------------------------------------------------------------
-# load package
+--------------Initiate RGA
+# Install RGA from CRAN with: ----------------------------------------------
+install.packages("RGA")
+# Initiate RGA
 library(RGA)
 
 # Connect to API ----------------------------------------------------------
