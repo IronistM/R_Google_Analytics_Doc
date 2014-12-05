@@ -1,5 +1,9 @@
 # Start getting the information! ------------------------------------------
 require("dataframes2xls")
+
+# Add an intro sheet
+intro <- rbind("This is a technical report of your Google Analytics Impementation",paste("Updated at :", date()))
+
 for (i in 1:length(accounts))
 {
   tmp_goals <- get_goals(account.id = accounts[i])
