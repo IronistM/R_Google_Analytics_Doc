@@ -12,5 +12,5 @@ for (i in 1:length(accounts))
   tmp_segments <- get_segments()
   tmp_custom_sources <- get_custom_sources()
   # Let's write the results to xls files
-  write.xls(c(tmp_webproperties,tmp_profiles,tmp_goals,tmp_segments,tmp_custom_sources), file=paste0("ga_doc_",websiteUrl[i],".xls"))
+  write.xls(c(intro,tmp_webproperties,tmp_profiles,tmp_goals,tmp_segments,tmp_custom_sources), file=paste0("ga_doc_",websiteUrl[i],".xls"))
 }
